@@ -1,0 +1,36 @@
+#usage
+#python fastaselection.py <originalfile.fasta> <namelist>
+# 	0			1		2		
+
+import sys, screed
+
+#inputs
+filein=open(sys.argv[1],'r')
+filelist=open(sys.argv[2],'r')
+
+#outputs
+outy=sys.argv[1]
+out1=outy+'.subselection'
+fileout=open(out1,'w')
+
+#create a list with the names of the sequences requested
+requestedsequences=[]
+for line in filelist:
+   line=line.strip('\n')
+   requestedsequences.append(line)
+print requestedsequences
+
+
+#read file, read each record, if name is in list write it, otherwise continue
+
+for record in screed.open(sys.argv[1]):
+   name0=record.name			#get sequence name
+   name1=name0.split('_')
+   name=name1[0]
+   if name in requestedsequences:
+      print name0
+      sequence=record.sequence
+      description=record.description
+      fileout.write(">%s %s\n%s\n" %(name0, description, sequence))
+   else:
+      continue

@@ -1,0 +1,36 @@
+#usage
+#python remote.blast.py <query.fasta> <output.name>
+# 	0			1	2
+
+import sys , Bio
+from Bio.Blast import NCBIWWW
+from Bio import SeqIO
+
+#inputs
+filein=open(sys.argv[1],'r')
+
+#output
+outy=sys.argv[1]
+out1=outy+'.blast.result.xml'
+fileout=open(out1,'w')
+
+
+record=SeqIO.parse(filein,format="fasta")
+result=NCBIWWW.qblast("blastp","nr",record.format("fasta"))
+
+
+fileout.write(result.read())
+fileout.close()
+result.close()
+
+result_handle=open(out1,'r')
+blast_records=NCBIXML.parse(result_handle)
+
+for alignment in blast_records.alignment:
+   for hsp in alignment.hsps:
+      print "sequence" , alignment.title
+      print "length:" , alignment.length
+      print "e.value" , hsp.expect
+      print hsp.query[0:50]
+      print hsp.match[0:50]
+      print hsp.subject[0:50]

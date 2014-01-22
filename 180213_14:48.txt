@@ -1,0 +1,200 @@
+10026  2013-02-15 22:27:36 ls
+10027  2013-02-15 22:27:44 nano fstab 
+10028  2013-02-15 22:28:09 sudo fdisk -l
+10029  2013-02-15 22:28:39 erick@bm-T3500:/etc$ sudo fdisk -l
+10030  2013-02-15 22:28:39 [sudo] password for erick:
+10031  2013-02-15 22:28:40 WARNING: GPT (GUID Partition Table) detected on '/dev/sda'! The util fdisk doesn't support GPT. Use GNU Parted.
+10032  2013-02-15 22:28:40 Disk /dev/sda: 4000.8 GB, 4000787030016 bytes
+10033  2013-02-15 22:28:40 255 heads, 63 sectors/track, 486401 cylinders, total 7814037168 sectors
+10034  2013-02-15 22:28:40 Units = sectors of 1 * 512 = 512 bytes
+10035  2013-02-15 22:28:40 Sector size (logical/physical): 512 bytes / 4096 bytes
+10036  2013-02-15 22:28:40 I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+10037  2013-02-15 22:28:40 Disk identifier: 0x0007fb3c
+10038  2013-02-15 22:28:40 /dev/sda1               1  4294967295  2147483647+  ee  GPT
+10039  2013-02-15 22:28:40 Partition 1 does not start on physical sector boundary.
+10040  2013-02-15 22:28:40 WARNING: GPT (GUID Partition Table) detected on '/dev/sdb'! The util fdisk doesn't support GPT. Use GNU Parted.
+10041  2013-02-15 22:28:40 Disk /dev/sdb: 4000.8 GB, 4000787030016 bytes
+10042  2013-02-15 22:28:40 255 heads, 63 sectors/track, 486401 cylinders, total 7814037168 sectors
+10043  2013-02-15 22:28:40 Units = sectors of 1 * 512 = 512 bytes
+10044  2013-02-15 22:28:40 Sector size (logical/physical): 512 bytes / 4096 bytes
+10045  2013-02-15 22:28:40 I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+10046  2013-02-15 22:28:40 Disk identifier: 0x00000000
+10047  2013-02-15 22:28:40 /dev/sdb1               1  4294967295  2147483647+  ee  GPT
+10048  2013-02-15 22:28:40 Partition 1 does not start on physical sector boundary.
+10049  2013-02-15 22:28:40 WARNING: GPT (GUID Partition Table) detected on '/dev/sdc'! The util fdisk doesn't support GPT. Use GNU Parted.
+10050  2013-02-15 22:28:40 Disk /dev/sdc: 2000.4 GB, 2000409772032 bytes
+10051  2013-02-15 22:28:40 255 heads, 63 sectors/track, 243202 cylinders, total 3907050336 sectors
+10052  2013-02-15 22:28:41 Units = sectors of 1 * 512 = 512 bytes
+10053  2013-02-15 22:28:41 Sector size (logical/physical): 512 bytes / 512 bytes
+10054  2013-02-15 22:28:41 I/O size (minimum/optimal): 512 bytes / 512 bytes
+10055  2013-02-15 22:28:41 Disk identifier: 0x0006b4b7
+10056  2013-02-15 22:28:41 /dev/sdc1            2048  3907049471  1953523712   83  Linux
+10057  2013-02-15 22:28:41 Disk /dev/sde: 2000.4 GB, 2000398934016 bytes
+10058  2013-02-15 22:28:41 255 heads, 63 sectors/track, 243201 cylinders, total 3907029168 sectors
+10059  2013-02-15 22:28:41 Units = sectors of 1 * 512 = 512 bytes
+10060  2013-02-15 22:28:41 Sector size (logical/physical): 512 bytes / 512 bytes
+10061  2013-02-15 22:28:41 I/O size (minimum/optimal): 512 bytes / 512 bytes
+10062  2013-02-15 22:28:41 Disk identifier: 0x00053790
+10063  2013-02-15 22:28:41 /dev/sde1            2048  3907029167  1953513560    7  HPFS/NTFS/exFAT
+10064  2013-02-15 22:29:53 sudo mount -a
+10065  2013-02-15 22:30:02 cd ..
+10066  2013-02-15 22:30:03 ls
+10067  2013-02-15 22:30:06 cd media/
+10068  2013-02-15 22:30:07 ls
+10069  2013-02-15 22:30:12 sudo mount -a
+10070  2013-02-15 22:30:16 ls
+10071  2013-02-15 22:30:18 cd ..
+10072  2013-02-15 22:30:19 cd etc/
+10073  2013-02-15 22:30:21 ls
+10074  2013-02-15 22:30:26 nano fstab
+10075  2013-02-15 22:31:52 screen -r
+10076  2013-02-15 22:36:59 man dmseg
+10077  2013-02-15 22:37:14 dmseg --help
+10078  2013-02-15 22:37:18 dmseg --h
+10079  2013-02-15 22:37:20 dmseg
+10080  2013-02-15 22:37:32 man dmesg
+10081  2013-02-15 22:55:42 exit
+10082  2013-02-17 10:31:34 scren -r
+10083  2013-02-17 10:31:36 screen -r
+10084  2013-02-17 10:31:48 cd ..
+10085  2013-02-17 10:31:49 ls
+10086  2013-02-17 10:31:54 cd raw.data/
+10087  2013-02-17 10:31:54 ls
+10088  2013-02-17 10:32:11 cd ..
+10089  2013-02-17 10:32:12 ls
+10090  2013-02-17 10:32:24 cd fastqc/
+10091  2013-02-17 10:32:24 ls
+10092  2013-02-17 10:32:28 cd ..
+10093  2013-02-17 10:32:28 ls
+10094  2013-02-17 10:32:40 cd ..
+10095  2013-02-17 10:32:40 ls
+10096  2013-02-17 10:32:47 cd CA2/
+10097  2013-02-17 10:33:12 ls
+10098  2013-02-17 10:33:20 cd filtered.fasta/
+10099  2013-02-17 10:33:20 ls
+10100  2013-02-17 10:33:36 head 6436.1.44354.TGAATG.fastq*
+10101  2013-02-17 10:34:06 clear
+10102  2013-02-17 10:34:08 head 6436.1.44354.TGAATG.fastq*
+10103  2013-02-17 10:35:34 cd ..
+10104  2013-02-17 10:35:34 ls
+10105  2013-02-17 10:35:39 cd raw.data/
+10106  2013-02-17 10:35:52 cd ..
+10107  2013-02-17 10:35:52 ls
+10108  2013-02-17 10:35:55 cd failed/
+10109  2013-02-17 10:35:56 ls
+10110  2013-02-17 10:35:58 ls -ls 
+10111  2013-02-17 10:36:02 rm test*
+10112  2013-02-17 10:36:55 man gunzip
+10113  2013-02-17 10:37:51 gunzip -c 6213.2.40290.ATGTCA-FAIL.fastq.gz > test
+10114  2013-02-17 10:38:36 ls
+10115  2013-02-17 10:40:07 for i in *gz;do echo $i; gunzip -c $i > $i.tocount;wc -l $i.tocount > $i.lines;mv $i.lines ~/Dropbox/;rm $i.tocount;done
+10116  2013-02-17 11:10:39 ls
+10117  2013-02-17 11:11:46 for i in 6213*gz;do echo $i; gunzip -c $i > $i.tocount;wc -l $i.tocount > $i.lines;mv $i.lines ~/Dropbox/;rm $i.tocount;done
+10118  2013-02-17 11:15:29 ls
+10119  2013-02-17 11:15:39 cd ..
+10120  2013-02-17 11:15:39 ls
+10121  2013-02-17 11:15:43 cd filtered.fasta/
+10122  2013-02-17 11:15:43 ls
+10123  2013-02-17 11:15:46 cd samples/
+10124  2013-02-17 11:15:46 ls
+10125  2013-02-17 11:15:52 cd ..
+10126  2013-02-17 11:15:53 ls
+10127  2013-02-17 11:16:15 head 6514.3.46652.TTAGGC.fastq
+10128  2013-02-17 11:17:17 clear
+10129  2013-02-17 11:17:21 head -20 6514.3.46652.TTAGGC.fastq
+10130  2013-02-17 11:17:31 head -20 6514.3.46652.TTAGGC.fastq.trimmed.fa 
+10131  2013-02-17 11:19:35 #for i in *trimmed.fa;do echo $i;sed 's/@/>/g' $i $i.changed;echo $i.changed >> $i.stats;python count.total.bases.v2.py $i.changed >> $i.stats;mv $i.stats ~/Dropbox/;done
+10132  2013-02-17 11:19:35 ls
+10133  2013-02-17 11:20:00 head - 1000 6213.2.40290.ATGTCA.fastq.trimmed.fa >> test.trimmed.fa
+10134  2013-02-17 11:20:23 head -1000 6213.2.40290.ATGTCA.fastq.trimmed.fa >> test.trimmed.fa
+10135  2013-02-17 11:20:33 for i in test.trimmed.fa;do echo $i;sed 's/@/>/g' $i $i.changed;echo $i.changed >> $i.stats;python count.total.bases.v2.py $i.changed >> $i.stats;mv $i.stats ~/Dropbox/;done
+10136  2013-02-17 11:20:51 for i in test.trimmed.fa;do echo $i;sed 's/@/>/g' $i > $i.changed;echo $i.changed >> $i.stats;python count.total.bases.v2.py $i.changed >> $i.stats;mv $i.stats ~/Dropbox/;done
+10137  2013-02-17 11:21:06 nano ~/Dropbox/test.trimmed.fa.stats 
+10138  2013-02-17 11:21:31 for i in *.trimmed.fa;do echo $i;sed 's/@/>/g' $i > $i.changed;echo $i.changed >> $i.stats;python count.total.bases.v2.py $i.changed >> $i.stats;mv $i.stats ~/Dropbox/;done
+10139  2013-02-18 14:05:47 git
+10140  2013-02-18 14:06:01 cd ~/scripts/
+10141  2013-02-18 14:06:01 ls
+10142  2013-02-18 14:07:01 git config --global carden24 "Erick Cardenas "
+10143  2013-02-18 14:07:44 git
+10144  2013-02-18 14:07:57 git status
+10145  2013-02-18 14:09:30 git config --global carden24 "Erick Cardenas "
+10146  2013-02-18 14:11:28 git init
+10147  2013-02-18 14:11:43 touche README
+10148  2013-02-18 14:11:49 touch README
+10149  2013-02-18 14:11:59 nano README 
+10150  2013-02-18 14:12:17 git add README
+10151  2013-02-18 14:12:34 git -m 'first commit'
+10152  2013-02-18 14:12:39 git commit -m 'first commit'
+10153  2013-02-18 14:14:35 git remote add origin https://github.com/carden24/scripts/
+10154  2013-02-18 14:15:11 git init
+10155  2013-02-18 14:15:22 git add *
+10156  2013-02-18 14:15:33 git commit -m "initial"
+10157  2013-02-18 14:16:54 git remote add origin https://github.com/carden24/scripts/.git/
+10158  2013-02-18 14:17:02 git push origin
+10159  2013-02-18 14:19:54 ls
+10160  2013-02-18 14:19:56 git init
+10161  2013-02-18 14:21:00 git remote add origin https://github.com/carden24/scripts.git
+10162  2013-02-18 14:21:10 git pass add origin https://github.com/carden24/scripts.git
+10163  2013-02-18 14:21:21 git remote add beat https://github.com/carden24/scripts.git
+10164  2013-02-18 14:21:39 git push beat master
+10165  2013-02-18 14:23:04 ls
+10166  2013-02-18 14:23:15 git add torunheatmap.3.R
+10167  2013-02-18 14:24:20 git remote add beaty https://github.com/carden24/scripts.git
+10168  2013-02-18 14:24:29 git push beaty
+10169  2013-02-18 14:24:44 git remote add beaty https://github.com/carden24/scripts.git
+10170  2013-02-18 14:25:46 git status
+10171  2013-02-18 14:25:54 git add *
+10172  2013-02-18 14:25:57 git status
+10173  2013-02-18 14:26:09 git add torunheatmap.3.R
+10174  2013-02-18 14:26:11 git status
+10175  2013-02-18 14:27:29 git status -s
+10176  2013-02-18 14:28:24 git config --global username "Erick Cardenas"
+10177  2013-02-18 14:28:37 git config --global user.name "Erick Cardenas"
+10178  2013-02-18 14:28:58 git config --global user.email "carden24@mail.ubc.ca"
+10179  2013-02-18 14:29:34 git config --global core.editor nano
+10180  2013-02-18 14:29:47 git config --list
+10181  2013-02-18 14:30:07 git config --global user.name "carden24"
+10182  2013-02-18 14:30:09 git config --list
+10183  2013-02-18 14:30:10 clear
+10184  2013-02-18 14:30:12 git config --list
+10185* 2013-02-18 14:30:51 
+10186  2013-02-18 14:31:04 git config --list
+10187  2013-02-18 14:32:12 git init
+10188  2013-02-18 14:32:26 git add *
+10189  2013-02-18 14:32:39 git commit -m "first round"
+10190  2013-02-18 14:32:54 sudo git add *
+10191  2013-02-18 14:33:04 git init
+10192  2013-02-18 14:33:07 git commit -m "first round"
+10193  2013-02-18 14:33:46 git status
+10194  2013-02-18 14:33:48 clear
+10195  2013-02-18 14:34:02 git status
+10196  2013-02-18 14:34:29 ls
+10197  2013-02-18 14:34:34 git add torunheatmap.3.R
+10198  2013-02-18 14:34:38 git status
+10199  2013-02-18 14:35:46 git init
+10200  2013-02-18 14:36:05 ;s
+10201  2013-02-18 14:36:05 ls
+10202  2013-02-18 14:36:38 git
+10203  2013-02-18 14:36:44 git status
+10204  2013-02-18 14:37:00 git lot
+10205  2013-02-18 14:37:03 git log
+10206  2013-02-18 14:37:10 clear
+10207  2013-02-18 14:37:11 ls
+10208  2013-02-18 14:37:14 git init
+10209  2013-02-18 14:37:37 cd .git/
+10210  2013-02-18 14:37:38 ls
+10211  2013-02-18 14:37:42 cd ..
+10212  2013-02-18 14:37:43 ls
+10213  2013-02-18 14:37:53 clear
+10214  2013-02-18 14:37:54 ls
+10215  2013-02-18 14:38:10 git add *.R
+10216  2013-02-18 14:38:47 git status
+10217  2013-02-18 14:43:50 git add -A
+10218  2013-02-18 14:43:53 git status
+10219  2013-02-18 14:44:24 ls
+10220  2013-02-18 14:44:44 zip ec.script.zip *
+10221  2013-02-18 14:44:51 mv ec.script.zip ~/Documents/
+10222  2013-02-18 14:45:12 git status -s
+10223  2013-02-18 14:46:37 clear
+10224  2013-02-18 14:48:42 ls
+10225  2013-02-18 14:48:45 log
