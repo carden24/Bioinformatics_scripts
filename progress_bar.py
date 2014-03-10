@@ -1,7 +1,4 @@
-import sys
-sys.path.insert(0, '/u/t/dev/screed')
-import screed
-from screed.fastq import fastq_iter
+import time, sys
 
 # update_progress() : Displays or updates a console progress bar
 ## Accepts a float between 0 and 1. Any int will be converted to a float.
@@ -24,27 +21,5 @@ def update_progress(progress):
         status = "Done...\r\n"
     block = int(round(barLength*progress))
     text = "\rPercent: [{0}] {1}% {2}".format( "="*block + " "*(barLength-block), progress*100, status)
-    sys.stderr.write(text)
-    sys.stderr.flush()
-
-counter=0
-for n, record in enumerate(fastq_iter(open(sys.argv[1]))):
-   counter=counter+1
-   print ('%s reads found' %counter)
-
-for n, record in enumerate(fastq_iter(open(sys.argv[1]))):
-   if n % 1 == 0:
-      progress=n/float(counter)
-      update_progress(progress)
-#print>>sys.stderr, '...', n     
-   sequence = record['sequence']
-   name = record['name']
-
-   if 'N' in sequence:
-      continue
-
-   print ">" + name
-   print sequence
-
-
-        
+    sys.stdout.write(text)
+    sys.stdout.flush()

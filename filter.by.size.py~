@@ -38,8 +38,7 @@ script_info['script_description'] = """Reads sequences, calculates size and writ
 script_info['script_usage'] = []
 
 usage= """
-Sorry to bother you, but you
-need to run it like this:
+Need to run it like this:
 python filter.by.size.py -i <filein> > -s <size.threshold>
 """
 
