@@ -46,7 +46,7 @@ python filter.by.size.py -i <filein> > -s <size.threshold>
 parser = OptionParser(usage)
 parser.add_option("-i", "--input_file", dest="input_fp",
                   help='the input fasta file [REQUIRED]')
-parser.add_option("-s", "--input_sie", dest="threshold_size",
+parser.add_option("-s", "--input_size", dest="threshold_size",
                   help='the input threshold  [REQUIRED]')
 
 
