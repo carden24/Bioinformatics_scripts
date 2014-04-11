@@ -294,7 +294,6 @@ def main(argv):
    input_fp = opts.input_fp 
    output_dir = opts.output_dir 
    assembly_file = opts.assembly_file 
-   model_len = opts.model_len 
    evalue_threshold=float(opts.evalue_threshold)
    hmm_coverage=float(opts.hmm_coverage)
    extract_mode = opts.extract_mode.strip()

@@ -300,15 +300,12 @@ def main(argv):
 
    #check if model length exists, otherwise it creates a model length dictionary
    print 'Checking model length...'
-   if model_len == 'none':
-      print '   HMM length not found'
-      hmmshortname = re.sub('[.](hmm)','',input_model, re.I)  #removes extension, case insensitive search
-      hmm_leng_file=hmmshortname+".length.txt"
-      print '   Created %s file' % hmm_leng_file
-      get_hmm_len(input_model)
-   else:
-      print '   Model length found in :%s' %model_len 
-
+   print '   HMM length not found'
+   hmmshortname = re.sub('[.](hmm)','',input_model, re.I)  #removes extension, case insensitive search
+   hmm_leng_file=hmmshortname+".length.txt"
+   print '   Created %s file' % hmm_leng_file
+   get_hmm_len(input_model)
+   
    #Running hmm scan 
    run_hmm_scan(input_model,input_fp,output_dir)
 
