@@ -34,15 +34,11 @@ script_info['script_usage'] = []
 
 usage = '''
 Usage:  
-./dbCAN_HMM_Genomes.py -c <directory_containing_dbCAN_files> [required] -e <specify_file_extension> [required] -f <input_format> [optional] -d <directory_containing_fasta_input> [optional]
+./HMM.search.and.parse.and.extract.py -i <input proteins> -m <hmm database> -o <output directory>
 
-Example:
-./dbCAN_HMM_Genomes.py -c ~/CAZy/ -e .gbk -d ~/Genomes/Assembled/Fasta/ -f genbank
-
-DEPENDENCIES: 	
-		ii) dbCAN files: dbCAN-fam-HMMs.txt, hmmscan-parser.sh & all.hmm.ps.len. (Note: one must have run \"hmmpress dbCAN-fam-HMMs.txt\" to format db in advance of this script)
+DEPENDENCIES: 	i) HMM database must be pressed
+		i) hmmscan-parser.sh in local folder
 		iii) HMMR v.3.0 - Must be in PATH
-
 '''
 
 parser = OptionParser(usage)
@@ -52,8 +48,6 @@ parser.add_option("-i", "--input_proteins", dest="input_fp",
                   help='The input protein file [REQUIRED]')
 parser.add_option("-o", "--output_dir", dest="output_dir",
                   help='The output directory [REQUIRED]')
-parser.add_option("-L", "--models_length", dest="model_len",default='none',
-                  help='Lengths of HMM models in HMM database [OPTIONAL]')
 parser.add_option("-e", "--evalue", dest="evalue_threshold",default=10,
                   help='Maximum evalue threshold  [OPTIONAL]')
 parser.add_option("-a", "--assembly", dest="assembly_file",default='none',
@@ -300,7 +294,6 @@ def main(argv):
    input_fp = opts.input_fp 
    output_dir = opts.output_dir 
    assembly_file = opts.assembly_file 
-   model_len = opts.model_len 
    evalue_threshold=float(opts.evalue_threshold)
    hmm_coverage=float(opts.hmm_coverage)
    extract_mode = opts.extract_mode.strip()
