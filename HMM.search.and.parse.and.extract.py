@@ -1,8 +1,16 @@
 #!/usr/bin/python
-import numpy as np
-import timeit
-import glob
-import fileinput
+# File created on 13 Feb 2014.
+from __future__ import division
+
+__author__ = "Erick Cardenas Poire"
+__copyright__ = "Copyright 2014"
+__credits__ = [""]
+__version__ = "1.0"
+__maintainer__ = "Erick Cardenas Poire"
+__status__ = "Release"
+
+#import glob
+#import fileinput
 
 from Bio import SeqIO
 import sys
@@ -12,10 +20,6 @@ import inspect
 from commands import getstatusoutput
 from optparse import OptionParser
 import shutil 
-
-
-
-#start = timeit.default_timer()
 
 
 #config = load_config()

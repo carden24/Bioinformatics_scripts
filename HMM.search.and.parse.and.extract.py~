@@ -1,8 +1,16 @@
 #!/usr/bin/python
-import numpy as np
-import timeit
-import glob
-import fileinput
+# File created on 13 Feb 2014.
+from __future__ import division
+
+__author__ = "Erick Cardenas Poire"
+__copyright__ = "Copyright 2014"
+__credits__ = [""]
+__version__ = "1.0"
+__maintainer__ = "Erick Cardenas Poire"
+__status__ = "Release"
+
+#import glob
+#import fileinput
 
 from Bio import SeqIO
 import sys
@@ -238,7 +246,6 @@ def extract_contigs(query,model,output,assembly_file):
    contigs_out.close()
    if progress_counter != len(contigs_list):
       print 'Some contigs were not found'
-   
 #End of Extract contigs function
    
 
@@ -285,18 +292,8 @@ def extract_all_proteins_from_contigs(query,model,output):
    #Close files
    for f in files:
       f.close()
-
-
-
 #End of Extract all proteins from contigs function
    
-
-
-
-
-
-
-
 
 def main(argv):
    (opts, args) = parser.parse_args()
