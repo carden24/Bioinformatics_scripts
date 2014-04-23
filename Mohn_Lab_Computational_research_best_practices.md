@@ -9,10 +9,11 @@ Mohn Lab Best practices for writing computer scripts
 
 <p>These  standards are strongly based on these three articles: </p>
 
-* <p> Best Practices for Scientific Computing [doi:10.1371/journal.pbio.1001745] (http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1001745)</p>
-* <p> Ten Simple Rules for Reproducible Computational Research [doi:10.1371/journal.pcbi.1003285](http://www.ploscollections.org/article/browse/issue/info%3Adoi%2F10.1371%2Fissue.pcol.v03.i01)</p>
+* Best Practices for Scientific Computing [doi:10.1371/journal.pbio.1001745]  (http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1001745)
 
-* <p> Ten Simple Rules for the Open Development of Scientific Software [doi:10.1371/journal.pcbi.1002802](http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002802)</p>
+* Ten Simple Rules for Reproducible Computational Research [doi:10.1371/journal.pcbi.1003285] (http://www.ploscollections.org/article/browse/issue/info%3Adoi%2F10.1371%2Fissue.pcol.v03.i01)</p>
+
+* Ten Simple Rules for the Open Development of Scientific Software [doi:10.1371/journal.pcbi.1002802] (http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002802)</p>
 <p></p>
 
 **Guidelines**
@@ -46,18 +47,16 @@ a.	At minimum your raw data and the scripts used to generate the analysis result
 
 **Recommended style guidelines**
 
-<p>For Python codes, use of the [following PEP8 standard](http://legacy.python.org/dev/peps/pep-0008/).
-
-For R use [this standard](http://stat405.had.co.nz/r-style.html)</p>
+For Python codes, use of the [following PEP8 standard.](http://legacy.python.org/dev/peps/pep-0008/)
+For R use [this standard.](http://stat405.had.co.nz/r-style.html)</p>
 
 **Version Control**
 
-<p>Create and use a [Github](https://github.com/) repository to store your working codes and keep track  of modifications to them. This is helpful to reproduce past results, restore function after changes, and essential if developing  codes as a team.</p>
-
+Create and use a [Github] (https://github.com/) repository to store your working codes and keep track  of modifications to them. This is helpful to reproduce past results, restore function after changes, and essential if developing  codes as a team.
 
 **R specific**
 
-<p>Save scripts and sessions. If revising old results, open the saved session instead of running the script again, this will save time and avoid changing the results if a random step is involved in your script. </p>
+<p>Save scripts and sessions. If revising old results, open the saved session instead of running the script again, this will save time and avoid changing the results if a random step is involved in your script.</p>
 <p>At the end of your scripts add the following lines to obtain the version of R you are using and the versions of the libraries used:</p>
     - Version
     - sessionInfo()
@@ -68,7 +67,7 @@ For R use [this standard](http://stat405.had.co.nz/r-style.html)</p>
 
 **Resources**
 
-<p>[Software carpentry](http://software-carpentry.org/index.html) has very clear and easy video tutorials on Unix, Python, and version control </p>
+[Software carpentry](http://software-carpentry.org/index.html) has very clear and easy video tutorials on Unix, Python, and version control
 <p></p>
 
 **Notepad++**
