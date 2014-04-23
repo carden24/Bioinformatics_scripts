@@ -9,10 +9,10 @@ Mohn Lab Best practices for writing computer scripts
 
 <p>These  standards are strongly based on these three articles: </p>
 
-* <p> Best Practices for Scientific Computing [doi:10.1371/journal.pbio.1001745](http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1001745)</p>
+* <p> Best Practices for Scientific Computing [doi:10.1371/journal.pbio.1001745] (http://www.plosbiology.org/article/info%3Adoi%2F10.1371%2Fjournal.pbio.1001745)</p>
 * <p>Ten Simple Rules for Reproducible Computational Research [doi:10.1371/journal.pcbi.1003285](http://www.ploscollections.org/article/browse/issue/info%3Adoi%2F10.1371%2Fissue.pcol.v03.i01)</p>
 
-* <p>Ten Simple Rules for the Open Development of Scientific Software [doi:10.1371/journal.pcbi.1002802](http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002802)</p>
+* <p>Ten Simple Rules for the Open Development of Scientific Software [doi:10.1371/journal.pcbi.1002802] (http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002802)</p>
 <p></p>
 
 **Guidelines**
@@ -68,8 +68,7 @@ For R use [this standard](http://stat405.had.co.nz/r-style.html)</p>
 
 **Resources**
 
-<p>[Software carpentry] (http://software-carpentry.org/index.html
-) has very clear and easy video tutorials on Unix, Python, and version control </p>
+<p>[Software carpentry](http://software-carpentry.org/index.html) has very clear and easy video tutorials on Unix, Python, and version control </p>
 <p></p>
 
 **Notepad++**
