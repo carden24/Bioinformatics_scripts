@@ -352,8 +352,12 @@ def main(argv):
         extract_all_proteins_from_contigs(input_fp, input_model, output_dir)
     print 'All tasks completed'
     print 'Keep calm and carry on'
+
     #cleanup
 
+#Create logs
+
+ 
 
 # the main function of metapaths
 if __name__ == "__main__":
