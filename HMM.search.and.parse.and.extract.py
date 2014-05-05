@@ -47,7 +47,7 @@ parser.add_option("-m", "--model", dest="input_model",
                   help='Input HMM database (prepared with hmmpress) [REQUIRED]')
 parser.add_option("-i", "--input_proteins", dest="input_fp",
                   help='The input protein file [REQUIRED]')
-parser.add_option("-o", "--output_dir", dest="output_dir",
+parser.add_option("-o", "--output_dir", dest="output_dir",default='.',
                   help='The output directory [REQUIRED]')
 parser.add_option("-e", "--evalue", dest="evalue_threshold",default=10,
                   help='Maximum evalue threshold  [OPTIONAL]')
@@ -64,7 +64,19 @@ parser.add_option('-x','--extract_mode', dest="extract_mode", default='none',
                         '\n(d) \'all\' -- Extract hits, contigs, and all\
                          proteins from hits\n')
 
+#Compiling frequently used regular expression patterns
+hmm_pattern = re.compile('[.](hmm)')
+query_pattern = re.compile('[.](fasta$|fas$|faa$|fsa$|fa$)')
 
+
+# checks if the supplied arguments are adequate
+def valid_arguments(opts, args):
+    if (opts.input_model == None or opts.input_fp == None ):
+        return True
+    else:
+        return False
+
+#Function to print progress
 def update_progress(progress):
     barLength = 30 # Modify this to change the length of the progress bar
     status = ""
@@ -88,7 +100,8 @@ def update_progress(progress):
 
 #Get HMM length function
 def get_hmm_len(input_model):
-    hmmshortname = re.sub('[.](hmm)','',input_model, re.I) 
+#    hmmshortname = re.sub('[.](hmm)','',input_model, re.I)
+    hmmshortname = re.sub(hmm_pattern,'',input_model, re.I)  
     hmm_leng_file = hmmshortname+".length.txt"
     hmm_fileout = open(hmm_leng_file,'w')
     hmm_filein = open(input_model,'r')
@@ -114,9 +127,11 @@ def get_hmm_len(input_model):
 #Function to run hmmscan and parse
 def run_hmm_scan (model,query,output):
     #removes extension, case insensitive search
-    hmmshortname = re.sub('[.](hmm)','',model, re.I)  
+#   hmmshortname = re.sub('[.](hmm)','',model, re.I)  
+    hmmshortname = re.sub(hmm_pattern,'',model, re.I)  
     #finds file format removes extension, case insensitive search
-    shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
+#   shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
+    shortname = re.sub(query_pattern,'',query, re.I)
     output_file = output + "/" + shortname + "_" + hmmshortname + '.hmm.out'
     output_file2 = output +"/" + shortname + "_" + hmmshortname + '.txt'
     print 'Running hmmscan...'
@@ -124,13 +139,14 @@ def run_hmm_scan (model,query,output):
     print 'Parsing results...'
     os.system(' '.join(['sh','hmmscan-parser.sh',output_file,'>',output_file2]))
 
-
 #Filtering by evalue and coverage
 def filtering_by_evalue_and_coverage(model,query,output,evalue,coverage):
     #removes extension, case insensitive search
-    hmmshortname = re.sub('[.](hmm)','',model, re.I)
+#   hmmshortname = re.sub('[.](hmm)','',model, re.I)
+    hmmshortname = re.sub(hmm_pattern,'',model, re.I)  
     #finds file format removes extension, case insensitive search
-    shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
+#   shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
+    shortname = re.sub(query_pattern,'',query, re.I)
     output_file2 = output+"/" + shortname + "_" + hmmshortname + '.txt'
     hmm_table = open(output_file2, 'r')
     output_file3 = output + "/" + shortname + "_" + hmmshortname+'.filtered.txt'
@@ -152,9 +168,11 @@ def filtering_by_evalue_and_coverage(model,query,output,evalue,coverage):
 #Function to extract hits from filtered results
 def extract_protein_hits(query,model,output):
     #removes extension, case insensitive search
-    hmmshortname = re.sub('[.](hmm)', '', model, re.I)
+    hmmshortname = re.sub(hmm_pattern,'',model, re.I)  
+#   hmmshortname = re.sub('[.](hmm)', '', model, re.I)
     #finds file format removes extension, case insensitive search
-    shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
+#   shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
+    shortname = re.sub(query_pattern,'',query, re.I)
     input_file4 = output+"/"+shortname+"_"+hmmshortname+'.filtered.txt'
     hmm_filtered_table2 = open(input_file4, 'r')
   
@@ -210,9 +228,11 @@ def extract_protein_hits(query,model,output):
 #Function to extract contigs
 def extract_contigs(query,model,output,assembly_file):
     #removes extension, case insensitive search
-    hmmshortname = re.sub('[.](hmm)', '', model, re.I)
+#   hmmshortname = re.sub('[.](hmm)', '', model, re.I)
+    hmmshortname = re.sub(hmm_pattern,'',model, re.I)  
     #finds file format removes extension, case insensitive search
-    shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','', query, re.I)
+#   shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','', query, re.I)
+    shortname = re.sub(query_pattern,'',query, re.I)
     input_file4 = output + "/" + shortname + "_" + hmmshortname +'.filtered.txt'
     hmm_filtered_table2 = open(input_file4, 'r')
   
@@ -260,24 +280,26 @@ def extract_contigs(query,model,output,assembly_file):
 
 #Function to extract all proteins from contig
 def extract_all_proteins_from_contigs(query, model, output):
-    #removes extension, case insensitive search
-    hmmshortname = re.sub('[.](hmm)','',model, re.I)
-    #finds file format removes extension, case insensitive search
-    shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
+    # Removes extension, case insensitive search
+    hmmshortname = re.sub(hmm_pattern,'',model, re.I)   
+#   hmmshortname = re.sub('[.](hmm)','',model, re.I)
+    # Finds file format removes extension, case insensitive search
+#   shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
+    shortname = re.sub(query_pattern,'',query, re.I)
     input_file4 = output + "/" + shortname + "_" + hmmshortname +'.filtered.txt'
     hmm_filtered_table2 = open(input_file4, 'r')
   
     print '   Extracting all proteins from hit contigs of' 
     print '   file = %s, and database = %s' %(query, model)
 
-    #Create protein list
+    # Create protein list
     protein_list = []
     for line3 in hmm_filtered_table2:
         line4 = line3.strip('\n').split('\t')
         protein_hit = line4[0]
         protein_list.append(protein_hit)   
 
-    #Create protein-contig dictionary
+    # Create protein-contig dictionary
     contigs_list=[]
     for protein in protein_list: #parse through list and add to contigs_list
         contig = protein.rsplit('_',1)
@@ -286,17 +308,17 @@ def extract_all_proteins_from_contigs(query, model, output):
 
     print '   Looking for %s contigs' %len(contigs_list)
 
-    #open one output file per model
-    #Generate list of output files 
+    # Open one output file per model
+    # Generate list of output files 
     files = [open(output + '/' + shortname + '_' + hmmshortname + '_' \
              + contigs + '.fasta','w') for contigs in (contigs_list)]
 
-    #Open original file, find if name is in hit list,
-    #Then get models hits and write to model result files
+    # Open original file, find if name is in hit list,
+    # Then get models hits and write to model result files
     filein = open(query,'r')
-    for record in SeqIO.parse(filein,"fasta"):
+    for record in SeqIO.parse(filein, "fasta"):
         name = record.name
-        the_contig0 = name.rsplit('_',1)
+        the_contig0 = name.rsplit('_', 1)
         the_contig = the_contig0[0]
         if the_contig in contigs_list:
             index = contigs_list.index(the_contig)
@@ -312,6 +334,18 @@ def main(argv):
     (opts, args) = parser.parse_args()
     print ''
     print 'Initializing...'
+
+    if valid_arguments(opts, args):
+        print usage
+        sys.exit(0)
+
+    # try to load the parameter file    
+    try:
+        hmm_parser = open('hmmscan-parser.sh')
+    except IOError:
+        raise IOError,\
+        "Cannot open hmmscan-parser.sh. Please copy it to the local directory"
+
     # initialize the input directory or file
     input_model = opts.input_model 
     input_fp = opts.input_fp 
@@ -321,24 +355,25 @@ def main(argv):
     hmm_coverage = float(opts.hmm_coverage)
     extract_mode = opts.extract_mode.strip()
 
-    #Creates a model length dictionary
+    # Creates a model length dictionary
     print 'Checking model length...'
-    hmmshortname = re.sub('[.](hmm)', '', input_model, re.I)
+#   hmmshortname = re.sub('[.](hmm)', '', input_model, re.I)
+    hmmshortname = re.sub(hmm_pattern,'',input_model, re.I)   
     hmm_leng_file = hmmshortname + ".length.txt"
     print '   Created %s file' % hmm_leng_file
     get_hmm_len(input_model)
    
-    #Running hmm scan 
+    # Running hmm scan 
     run_hmm_scan(input_model, input_fp, output_dir)
 
-    #Filter results with model coverage and evalue
+    # Filter results with model coverage and evalue
     filtering_by_evalue_and_coverage(input_model, input_fp, output_dir,
                                      evalue_threshold, hmm_coverage)
 
     print 'Checking extract mode...'
     print '   Extract mode set to %s' %extract_mode
 
-    #Checking extraction mode
+    # Checking extraction mode
     if extract_mode == 'none':
         print '   No extraction performed...'
     elif extract_mode == 'proteins':
@@ -353,7 +388,7 @@ def main(argv):
     print 'All tasks completed'
     print 'Keep calm and carry on'
 
-    #cleanup
+    # Cleanup
 
 #Create logs
 
