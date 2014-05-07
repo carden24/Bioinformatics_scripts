@@ -26,7 +26,8 @@ for row in csv.reader(filein):
    description=row[1]
    foly1=row[2]
    foly2=row[3]
-   maxbits=max_bits_dict.get(subject)    
+   maxbits=max_bits_dict.get(subject) 
+   print maxbits   
    x=folydict.get(subject, [])
    x.append(description)
    x.append(foly1)
