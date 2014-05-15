@@ -3,3 +3,5 @@
 
 # OSX Files
 .DS_Store
+
+/ignore/*
