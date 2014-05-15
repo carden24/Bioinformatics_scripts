@@ -1,4 +1,3 @@
-
 #usage
 #python retrieve.lineage.py <namelist>
 # 	0			1	
