@@ -7,9 +7,9 @@ import sys
 import Bio
 from Bio import SeqIO
 
-filein=open(sys.argv[1],'r')
-filename=sys.argv[1]
+filein = open(sys.argv[1], 'r')
+filename = sys.argv[1]
 
-for seq_record in SeqIO.parse(filein, format="fasta"):
-   name=seq_record.id
-   print "%s\t%s" %(filename,name)
+for seq_record in SeqIO.parse(filein, format = "fasta"):
+   name = seq_record.id
+   print "%s\t%s" %(filename, name)

@@ -22,7 +22,7 @@ from optparse import OptionParser
 script_info={}
 script_info['brief_description'] = """Converts fastq to fasta"""
 script_info['script_description'] = """Read fastq with biopython, writes as fasta
-             REQUIRED: You must have a fasta and coverage file with same base name"""
+             REQUIRED: You must have a fasta file"""
 script_info['script_usage'] = []
 
 usage= """
@@ -107,6 +107,5 @@ def main(argv):
 #   fileout.close()
 
 # the main function 
-if __name__ == "__main__":
-    main(sys.argv[1:])    
+main(sys.argv[1:])    
 

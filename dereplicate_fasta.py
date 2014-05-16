@@ -21,7 +21,7 @@ except:
 
 
 
-#config = load_config()
+# config = load_config()
 script_info={}
 script_info['brief_description'] = """Dereplicates sequences based on name"""""
 script_info['script_description'] = """
@@ -85,7 +85,5 @@ def main(argv):
             sys.stderr.flush()
             continue
  
-# the main function of metapaths
-if __name__ == "__main__":
-    main(sys.argv[1:])
-    print('\r')
+# the main function
+ main(sys.argv[1:])

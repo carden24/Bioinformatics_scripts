@@ -1,3 +1,5 @@
+# This script was used to count the times of members of a pair end agree on the subject of CAZY family
+
 #usage score.paired.ends.py <blast.output> <dictionary.for.scoring>
 #           0                  1  
 
