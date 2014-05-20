@@ -78,34 +78,40 @@ def main(argv):
             organism = organism.strip('[]')
 
         # Capture CAZy family information
-        description_search = re.search(' (\()([AGCP])([AHTEL])(\:)([A-Z0-9_]+)(\))', description)
+        #description_search = re.search('(\()(CAZy)(\:)([AGCP])([AHTEL])(\:)([A-Z0-9_:]+)(\))', description)
+        description_search = re.search('(\()([CAZY]+)(\:)([A-Z0-9\_\:]+)(\)) ', description)
+        description_search = re.search('(\()([CAZy]+)(\:)([0-9A-Za-z\_\:\[\],]+)(\))', description)
+#        print description
+
         if description_search == None:
             print 'No CAZY family found for:'
             print description
+
+
         familydata = description_search.group(0)
         the_cazy_class = familydata.split(':')
-        cazy_class = the_cazy_class[0].strip(' (')
-        cazy_family_number = the_cazy_class[1].strip(')')
-        if cazy_family_number.find('_') != -1:
-            # if there is subfamily information just ignore it
-            # And use the family information instead
-            cazy_family_number.split('_')
-            cazy_family_number = cazy_family_number[0]
-            cazy = cazy_class + cazy_family_number
-        else:
-            cazy = cazy_class + cazy_family_number
+#        print familydata
+        cazy_class = the_cazy_class[1].strip(' (')
+        cazy_family = the_cazy_class[2].strip(')')
+        cazy_subfamily = the_cazy_class[3].strip(')')
+        if cazy_subfamily.find('[') != -1:
+            print 'I found some weird results'
+            print description
+            print 'Setting subfamily to none'
+            cazy_subfamily = 'none'
 
         # Create empty list to append the results 
         result = []
         result.append(description)
-        result.append(cazy)
+        result.append(cazy_family)
         result.append(cazy_class)
+        result.append(cazy_subfamily)
         result.append(organism)
 
         # Update dictionary with results
         cazydict[subject] = result
         counter = counter + 1
-        text = "\r   Sequences found= %s" %counter
+        text = "\r   Sequences found : %s" %counter
         sys.stderr.write(text)
         sys.stderr.flush()
     print ''

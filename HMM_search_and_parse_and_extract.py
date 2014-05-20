@@ -43,20 +43,20 @@ DEPENDENCIES: 	i) HMM database must be pressed
 '''
 
 parser = OptionParser(usage)
-parser.add_option("-m", "--model", dest="input_model",
-                  help='Input HMM database (prepared with hmmpress) [REQUIRED]')
-parser.add_option("-i", "--input_proteins", dest="input_fp",
-                  help='The input protein file [REQUIRED]')
-parser.add_option("-o", "--output_dir", dest="output_dir",default='.',
-                  help='The output directory [REQUIRED]')
-parser.add_option("-e", "--evalue", dest="evalue_threshold",default=10,
-                  help='Maximum evalue threshold  [OPTIONAL]')
-parser.add_option("-a", "--assembly", dest="assembly_file",default='none',
-                  help='Original assembly file [OPTIONAL, default: none]')
-parser.add_option("-c", "--converage", dest="hmm_coverage",default=0,
-                  help='Minimum HMM coverage (%) [OPTIONAL, default: 0]')
-parser.add_option('-x','--extract_mode', dest="extract_mode", default='none',
-                   choices=['none', 'proteins', 'contigs','all'], 
+parser.add_option("-m", "--model", dest = "input_model",
+                  help = 'Input HMM database (prepared with hmmpress) [REQUIRED]')
+parser.add_option("-i", "--input_proteins", dest = "input_fp",
+                  help = 'The input protein file [REQUIRED]')
+parser.add_option("-o", "--output_dir", dest = "output_dir", default = '.',
+                  help = 'The output directory [REQUIRED]')
+parser.add_option("-e", "--evalue", dest = "evalue_threshold",default = 10,
+                  help = 'Maximum evalue threshold  [OPTIONAL]')
+parser.add_option("-a", "--assembly", dest = "assembly_file",default = 'none',
+                  help = 'Original assembly file [OPTIONAL, default: none]')
+parser.add_option("-c", "--converage", dest = "hmm_coverage",default = 0,
+                  help = 'Minimum HMM coverage (%) [OPTIONAL, default: 0]')
+parser.add_option('-x','--extract_mode', dest = "extract_mode", default = 'none',
+                   choices = ['none', 'proteins', 'contigs','all'], 
                    help='\n(a) \'none\' -- Do not extract anything (Default)\n'+
                         '\n(b) \'proteins\' --  Extract protein hits\n' +
                         '\n(c) \'contigs\' - Extract contigs that have hits,\
@@ -189,7 +189,7 @@ def extract_protein_hits(query,model,output):
         all_models_hits.append(model_of_protein_hit)
 
         #Get list of proteins hits, if non existent create empty list
-        models = protein_hit_dictionary.get(protein_hit,[])
+        models = protein_hit_dictionary.get(protein_hit, [])
         #Append current model hit to list
         models.append(model_of_protein_hit)   
         #Update dictionary entry   
@@ -205,7 +205,7 @@ def extract_protein_hits(query,model,output):
     #open one output file per model
     #Generate list of output files 
     #for item in all_models_hits:
-    files = [open(output+'/'+shortname+'_'+hmmshortname+'_'+item+'.fasta','w') \
+    files = [open(output + '/' + shortname + '_' + hmmshortname + '_' + item + '.fasta', 'w') \
            for item in set(all_models_hits)]
 
     #Open original file, find if name is in hit list,
@@ -227,7 +227,7 @@ def extract_protein_hits(query,model,output):
 
 #Function to extract contigs
 def extract_contigs(query,model,output,assembly_file):
-    #removes extension, case insensitive search
+    # removes extension, case insensitive search
 #   hmmshortname = re.sub('[.](hmm)', '', model, re.I)
     hmmshortname = re.sub(hmm_pattern,'',model, re.I)  
     #finds file format removes extension, case insensitive search
@@ -268,7 +268,7 @@ def extract_contigs(query,model,output,assembly_file):
     for record in SeqIO.parse(assembly_in,"fasta"):
         name = record.name
         if name in contigs_list:
-            progress_counter = progress_counter+1
+            progress_counter = progress_counter + 1
             contigs_out.write('>%s\n%s\n' % (name, record.seq))
         else:
             continue
@@ -285,8 +285,8 @@ def extract_all_proteins_from_contigs(query, model, output):
 #   hmmshortname = re.sub('[.](hmm)','',model, re.I)
     # Finds file format removes extension, case insensitive search
 #   shortname = re.sub('[.](fasta$|fas$|faa$|fsa$|fa$)','',query, re.I)
-    shortname = re.sub(query_pattern,'',query, re.I)
-    input_file4 = output + "/" + shortname + "_" + hmmshortname +'.filtered.txt'
+    shortname = re.sub(query_pattern, '', query, re.I)
+    input_file4 = output + "/" + shortname + "_" + hmmshortname + '.filtered.txt'
     hmm_filtered_table2 = open(input_file4, 'r')
   
     print '   Extracting all proteins from hit contigs of' 
@@ -300,7 +300,7 @@ def extract_all_proteins_from_contigs(query, model, output):
         protein_list.append(protein_hit)   
 
     # Create protein-contig dictionary
-    contigs_list=[]
+    contigs_list = []
     for protein in protein_list: #parse through list and add to contigs_list
         contig = protein.rsplit('_',1)
         contigs_list.append(contig[0])
@@ -346,7 +346,7 @@ def main(argv):
         raise IOError,\
         "Cannot open hmmscan-parser.sh. Please copy it to the local directory"
 
-    # initialize the input directory or file
+    # initialize the input file and model, loading parameters
     input_model = opts.input_model 
     input_fp = opts.input_fp 
     output_dir = opts.output_dir 
@@ -388,12 +388,10 @@ def main(argv):
     print 'All tasks completed'
     print 'Keep calm and carry on'
 
-    # Cleanup
-
-#Create logs
+# To do:
+# Create logs
+# Cleanup
 
  
-
-# the main function of metapaths
-if __name__ == "__main__":
-    main(sys.argv[1:])
+# the main function
+main(sys.argv[1:])

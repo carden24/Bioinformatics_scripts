@@ -64,7 +64,7 @@ def main(argv):
 
     # initialize the input directory or file
     input_fp = opts.input_fp 
-
+    print 'Reading %s' %input_fp
     #Create output file
     output_fp = create_output_name (input_fp)
     fileout = open (output_fp, 'w')
@@ -80,10 +80,10 @@ def main(argv):
 #        if record.name in fasta_names:
         else:
             removed_counter = removed_counter + 1
-            text = '\r   Replicated sequence found. Skipped %d' %removed_counter
+            text = '\r Replicated names found. Skipped %d entries' %removed_counter
             sys.stderr.write(text)
             sys.stderr.flush()
             continue
  
 # the main function
- main(sys.argv[1:])
+main(sys.argv[1:])
