@@ -65,7 +65,7 @@ def main(argv):
    fileout = open(list_of_files[1], 'w')
 
    for record in SeqIO.parse(filein,"fastq"):
-      fileout.write('>%s\n%s' % (record.name, record.seq))
+      fileout.write('>%s\n%s\n' % (record.name, record.seq))
    filein.close()
    fileout.close()
 
