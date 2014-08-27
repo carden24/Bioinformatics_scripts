@@ -30,3 +30,6 @@ for line in filein:
    else:
       continue
 
+
+filein.close()
+filein.out()

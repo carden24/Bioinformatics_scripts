@@ -18,5 +18,6 @@ for n, record in enumerate(fastq_iter(gzip.open(filein,'rb'))):
    seq2=len(seq)
    bases=bases+seq2
 
+print "File: %s" %filein
 print "Reads:%s" %counter
 print "Bases:%s" %bases

@@ -16,10 +16,6 @@
 
 
 
-
-
-
-
 #usage python correct_cazy_dictionary.py <bad.dict> <helping.dict> <out.file.base>
 #        	0		1		2		3	4
 
@@ -33,50 +29,71 @@ file_good_dictionary = open(sys.argv[3], 'w')
 
 bad_dictionary = pickle.load(file_bad_dictionary)
 helping_dictionary = pickle.load(file_helping_dictionary)
+good_dictionary={}
+
+print len(bad_dictionary.keys())
 
 AA_NC = ['AFZ53998.1','AFS83208.1','CCO11889.1','AFV76103.1']
 
+counterAA = 0
+counterAA0 = 0
+counterAA_NN = 0
 for key in bad_dictionary.keys():
     # Get dictionary entry
     dict_entry = bad_dictionary.get(key,0)
     # Test if we are modifying AA
     if dict_entry[2] == 'AA':
-#        print 'Found AA enzyme'
+        counterAA = counterAA + 1
+        print 'Found  AA enzyme'
         whole_name = dict_entry[0]
         cazy_class = dict_entry[2]
         cazy_organism = dict_entry[3]
         # Get good value from helping dictionary
         helping_entry = helping_dictionary.get(key)
         if helping_entry == None:
-#            print ' No AA class found'
+            print ' No AA class found'
             split_key = key.split('|')
             if split_key[3] in AA_NC:
-    #            print ' CAZy family set to AA_NN'
+                print ' CAZy family set to AA_NN'
                 cazy_family = 'AA_NN'
-                print cazy_family
+                counterAA_NN = counterAA_NN + 1
+#                print cazy_family
                 new_dict_entry = [whole_name, cazy_family, cazy_class, cazy_organism]
+                good_dictionary[key] = new_dict_entry
 #                print new_dict_entry
             else:
-
-    #            print '  CAZy family set to AA0'
+                print '  CAZy family set to AA0'
                 cazy_family = 'AA0'
-                print cazy_family
+                counterAA0 = counterAA0 + 1
+#                print cazy_family
                 new_dict_entry = [whole_name, cazy_family, cazy_class, cazy_organism]
+                good_dictionary[key] = new_dict_entry
 #                print new_dict_entry
         else:
             cazy_family = helping_entry[1]
-            #print ' CAZy family set to %s' %cazy_family
-            print cazy_family
+            print ' CAZy family set to %s' %cazy_family
             new_dict_entry = [whole_name, cazy_family, cazy_class, cazy_organism]
+            good_dictionary[key] = new_dict_entry
 #            print new_dict_entry
-        bad_dictionary[key] = new_dict_entry
+#        print new_dict_entry
+#        bad_dictionary[key] = new_dict_entry
+        print len(new_dict_entry)       
     else:
-        continue
+        print 'Not an AA family'
+        good_dictionary[key] = dict_entry
+        print len(dict_entry)
+#print counterAA
+print counterAA0
+print counterAA_NN
+print len(good_dictionary.keys())
 
 #print bad_dictionary
-pickle.dump(bad_dictionary,file_good_dictionary)
+pickle.dump(good_dictionary,file_good_dictionary)
 
 
+file_bad_dictionary.close()
+file_helping_dictionary.close()
+file_good_dictionary.close()
 
 
 

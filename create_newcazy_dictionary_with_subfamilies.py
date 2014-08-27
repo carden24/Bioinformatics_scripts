@@ -25,10 +25,7 @@ script_info['script_usage'] = []
 
 usage = '''
 Usage:  
-./HMM.search.and.parse.and.extract.py -i <input proteins> -m <hmm database>
- -o <output directory>
-
-python create_newcazy_dictionary.py -i <fasta.file> -o <output.pkl.file> 
+python ./create_newcazy_dictionary_with_subfamilies  -i <input proteins>  -o <output_dictionary.pkl>
 
 
 DEPENDENCIES: 	i)Biopython
