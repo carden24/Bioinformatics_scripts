@@ -1,6 +1,3 @@
-
-
-
 #usage
 #python fastaselection2.py <originalfile.fasta> <namelist>
 # 	0			1		2		
@@ -35,56 +32,50 @@ def update_progress(progress):
 
 
 #inputs
-filein=open(sys.argv[1],'r')
-filelist=open(sys.argv[2],'r')
+filein = open(sys.argv[1], 'r')
+filelist = open(sys.argv[2], 'r')
 
 #outputs
-outy=sys.argv[1]
-out1=outy+'.subselection'
-fileout=open(out1,'w')
+outy = sys.argv[2]
+out1 = outy + '.subselection'
+fileout = open(out1, 'w')
 
 
 #create a list with the names of the sequences requested
-requestedsequences=[]
+requestedsequences = []
 for line in filelist:
-   line=line.strip('\n').strip('\r')
+   line = line.strip('\n').strip('\r')
    requestedsequences.append(line)
 
-reque=set(requestedsequences)
-duplicated=len(requestedsequences)-len(reque)
+reque = set(requestedsequences)
+duplicated = len(requestedsequences) - len(reque)
 
 if (duplicated > 0):
    print "You have %s duplicated requested sequences" %duplicated
+else:
+   continue
 
-
-#number_records=len(requestedsequences)
-number_records=len(reque)
+number_records = len(reque)
 print "%s records requested" % number_records
-
-
-
-
-
 
 
 #read file, read each record, if name is in list write it, otherwise continue
 #counter=1
-found_counter=0
-found_list=[]
+found_counter = 0
+found_list = []
 for record in screed.open(sys.argv[1]):
-   sequence_name=record.name			#get sequence name
-#   if sequence_name in requestedsequences:
+   # Get sequence name
+   sequence_name = record.name
    if sequence_name in reque:
       found_list.append(sequence_name)
-      found_counter=found_counter+1
-#      print "%s of %s records found" %(counter, number_records)
-      progress=found_counter/float(number_records)
+      found_counter = found_counter + 1
+      progress = found_counter/float(number_records)
       update_progress(progress)
-      sequence=record.sequence
-      sequence=sequence.strip('*') #get rid of stop codon marked as *
-      description=record.description
+      sequence = record.sequence
+      # Get rid of stop codon marked as *
+      sequence = sequence.strip('*')
+      description = record.description
       fileout.write(">%s %s\n%s\n" %(sequence_name, description, sequence))
- #     counter=counter+1
    else:
       continue
 
@@ -95,7 +86,7 @@ print "%s records found" % found_counter
 if number_records == found_counter:
    print 'Keep calm and carry on'
 else:
-      notfound=list(reque-set(found_list))
+      notfound = list(reque - set(found_list))
       print "Not found:%s" %notfound
 
 fileout.close()
