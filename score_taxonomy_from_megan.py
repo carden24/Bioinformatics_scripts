@@ -5,9 +5,9 @@ import sys
 
 score_dictionary = {}
 filein = open(sys.argv[1], 'rb')
-fileout = open(sys.argv[1] + '.core', 'rb')
+fileout = open(sys.argv[1] + '.score', 'w')
 
-for line in open (filein, 'rb'):
+for line in filein:
      line0 = line.split(';')
      phyla = line[8]
      phyla = phyla.lstrip()
