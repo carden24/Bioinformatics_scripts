@@ -14,7 +14,7 @@ out3 = outy + 'detailed'
 
 fileout1 = open(out1, 'w')
 fileout2 = open(out2, 'w')
-fileout3 = open(out2, 'w')
+fileout3 = open(out3, 'w')
 
 cazy_or_foly_dict = pickle.load(filedict)
 familydict = {}
@@ -45,7 +45,6 @@ for line in filein:
    sss = subfamilydict.get(subfamily, 0)
    ttt = sss + 1
    subfamilydict[subfamily] = ttt
-   
    fileout3.write('%s\t%s\t%s\t%s\t%s\n' %(query, subject, family, subfamily, evalue))
 
 
@@ -57,3 +56,6 @@ for key1, value1 in familydict.iteritems():
 for key2, value2 in subfamilydict.iteritems():
    fileout2.write("%s\t%d\n" %(key2, value2))
 
+fileout1.close()
+fileout2.close()
+fileout3.close()
