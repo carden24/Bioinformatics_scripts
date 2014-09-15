@@ -17,7 +17,7 @@ for line in open (filein, 'rb'):
 
 #write score_dictionary
 for key1, value1 in score_dictionary.iteritems():
-   fileout.write("%s\t%d\n" %(key1, value1))
+   fileout.write("%s\t%s\t%d\n" %(sys.argv[1], key1, value1))
 
 filein.close()
 fileout.close()
