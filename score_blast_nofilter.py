@@ -46,7 +46,7 @@ for line in filein:
    ttt = sss + 1
    subfamilydict[subfamily] = ttt
    
-   write.fileout3('%s\t%s\t%s\t%s\t%s\n' %(query, subject, family, subfamily, evalue))
+   fileout3.write('%s\t%s\t%s\t%s\t%s\n' %(query, subject, family, subfamily, evalue))
 
 
 #write familydict dictionary
