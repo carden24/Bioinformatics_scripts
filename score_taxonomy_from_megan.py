@@ -9,7 +9,7 @@ fileout = open(sys.argv[1] + '.score', 'w')
 
 for line in filein:
      line0 = line.split(';')
-     phyla = line[8]
+     phyla = line0[8]
      phyla = phyla.lstrip()
      phyla_score = score_dictionary.get(phyla, 0)
      phyla_score = phyla_score + 1
