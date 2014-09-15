@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 # score_taxonomy_from_megan.py
-python 
 
 score_dictionary = {}
 filein = open(sys.argv[1], 'rb')
