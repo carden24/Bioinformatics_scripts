@@ -30,7 +30,7 @@ for line in filein:
 for key1, value1 in score_dictionary.iteritems():
    fileout.write("%s\t%s\t%d\n" %(sys.argv[1], key1, value1))
 
-fileout.write(("%s\ttotal_reads\t%d\n" %(sys.argv[1], counter))
+fileout.write("%s\ttotal_reads\t%d\n" %(sys.argv[1], counter))
 
 filein.close()
 fileout.close()
