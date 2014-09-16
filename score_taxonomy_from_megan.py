@@ -22,9 +22,16 @@ for line in filein:
     else:
         phyla = line0[8]
         phyla = phyla.lstrip()
-        phyla_score = score_dictionary.get(phyla, 0)
-        phyla_score = phyla_score + 1
-        score_dictionary[phyla] = phyla_score
+        if phyla == 'Proteobacteria':
+            phyla = line0[10]
+            phyla = phyla.lstrip()
+            phyla_score = score_dictionary.get(phyla, 0)
+            phyla_score = phyla_score + 1
+            score_dictionary[phyla] = phyla_score
+        else:
+            phyla_score = score_dictionary.get(phyla, 0)
+            phyla_score = phyla_score + 1
+            score_dictionary[phyla] = phyla_score
 
 #write score_dictionary
 for key1, value1 in score_dictionary.iteritems():
