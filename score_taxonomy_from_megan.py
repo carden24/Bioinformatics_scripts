@@ -6,8 +6,10 @@ import sys
 score_dictionary = {}
 filein = open(sys.argv[1], 'rb')
 fileout = open(sys.argv[1] + '.score', 'w')
+counter = 0
 
 for line in filein:
+    counter =  counter + 1
     line0 = line.split(';')
 #     test_assign = line0[2]
 #     print line0
@@ -27,6 +29,8 @@ for line in filein:
 #write score_dictionary
 for key1, value1 in score_dictionary.iteritems():
    fileout.write("%s\t%s\t%d\n" %(sys.argv[1], key1, value1))
+
+file.out.write(("%s\ttotal_reads\t%d\n" %(sys.argv[1], counter))
 
 filein.close()
 fileout.close()
