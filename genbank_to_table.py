@@ -55,7 +55,7 @@ def main(argv):
                     prod = 'No product'
                 locus = str(f.qualifiers['locus_tag'])
                 loc = locus.strip('[]\'')
-                fileout.write ("%s\t%s\t%s\t%s\n" %(loc, beginning, end, prod))
+                fileout.write ("%s\t%s\t%s\t%s\t%s\n" %(loc, beginning, end, prod, seq_record.id))
             else:
                 continue
 
