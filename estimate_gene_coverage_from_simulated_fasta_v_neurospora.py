@@ -4,7 +4,6 @@ from Bio import SeqIO
 from optparse import OptionParser
 import screed
 
-#config = load_config()
 script_info = {}
 script_info['brief_description'] = """Converts genbank file to table"""
 script_info['script_description'] = """Converts genbank file to table
@@ -45,8 +44,9 @@ def get_annotation_dictionary(annotation):
         gene_name = line[0]
         gene_start = line[1]
         gene_end = line[2]
-        chromosome = line [3]
-        annotation_to_keep = [gene_name, gene_start, gene_end, chromosome]
+        gene_chromosome = line[4]
+        gene_chromosome = gene_chromosome.rstrip('\n')
+        annotation_to_keep = [gene_name, gene_start, gene_end, gene_chromosome]
         annotation_dictionary[gene_start] = annotation_to_keep
     return annotation_dictionary
 
@@ -60,56 +60,61 @@ def create_cazy_list(expected_file):
 
 # Function to score genes
 
-def score_gene(seq_start, seq_end, seq_len, annt_dict):
+def score_gene2(seq_start, seq_end, seq_len, annt_dict, read_chromo):
     for gene_start in annt_dict.iterkeys():
-        #print '%s, %s, %s' %(seq_start, seq_end, gene_start)
         # Sequence starts and ends before gene
-        if int(seq_end) <= int(gene_start):
-            #print 'Sequence starts and ends before gene'
+        annotation_data = annt_dict.get(gene_start)
+        gene_end = int(annotation_data[2])
+        gene_chromosome = str(annotation_data[3])
+        if read_chromo != gene_chromosome:
+            #print 'Wrong chromosome'
             continue
         else:
-            annotation_data = annt_dict.get(gene_start)
-            try:
-                gene_end = int(annotation_data[2])
-            except ValueError:
-                print annotation_data
-            # Sequence starts and ends after gene
-            if int(seq_start) >= int(gene_end):
-                #print 'Sequence starts and ends after gene'
+#            print 'Correct chromosome'
+            #print '%s %s' %(read_chromo, gene_chromosome)
+            #print '%s, %s, %s' %(seq_start, seq_end, gene_start)
+            if int(seq_end) <= int(gene_start):
+                #print 'Sequence starts and ends before gene'
                 continue
             else:
-                #print 'Part of sequence inside gene'
-                # Sequence completely contained inside gene
-                if (int(seq_start) >= int(gene_start)) and \
-                   (int(seq_end) <= int(gene_end)):
-                    #print 'Whole sequence inside gene'
-                    gene_name = annotation_data[0]
+                # Sequence starts and ends after gene
+                if int(seq_start) >= int(gene_end):
+                    #print 'Sequence starts and ends after gene'
+                    continue
                 else:
-                    # Sequence start inside gene
-                    if int(seq_start) >= int(gene_start):
-                        seq_inside_gene = int(gene_end) - int(seq_start)
-                        if seq_inside_gene <= (0.5 * int(seq_len)):
-                            # Most of sequence inside gene
-                            #print 'Most of sequence inside gene'
-                            gene_name = annotation_data[0]
-                        else:
-                            gene_name = 'Intergenic'
+                    #print 'Part of sequence inside gene'
+                    #print '%s, %s, %s, %s' %(seq_start, seq_end, gene_start, gene_end)
+                    # Test if sequence completely contained inside gene
+                    if (int(seq_start) >= int(gene_start)) and \
+                       (int(seq_end) <= int(gene_end)):
+                        #print 'Whole sequence inside gene'
+                        gene_name = annotation_data[0]
                     else:
-                        # Sequence ends inside gene
-                        seq_inside_gene = int(seq_end) - int(gene_start)
-                        if seq_inside_gene <= (0.5 * int(seq_len)):
-                            # Most of sequence inside gene
-                            #print 'Most of sequence inside gene'
-                            gene_name = annotation_data[0]
+                        # Sequence start inside gene
+                        if int(seq_start) >= int(gene_start):
+                            seq_inside_gene = int(gene_end) - int(seq_start)
+                            if seq_inside_gene <= (0.5 * int(seq_len)):
+                                # Most of sequence inside gene
+                                #print 'Most of sequence inside gene'
+                                gene_name = annotation_data[0]
+                            else:
+                                gene_name = 'Intergenic'
                         else:
-                            gene_name = 'Intergenic'
+                            # Sequence ends inside gene
+                            seq_inside_gene = int(seq_end) - int(gene_start)
+                            if seq_inside_gene <= (0.5 * int(seq_len)):
+                                # Most of sequence inside gene
+                                #print 'Most of sequence inside gene'
+                                gene_name = annotation_data[0]
+                            else:
+                                gene_name = 'Intergenic'
                 #print gene_name
-#                if gene_name == None:
-#                    #print 'no gene'
-#                else:
-#                    continue
-                return gene_name
-
+##                if gene_name == None:
+##                    #print 'no gene'
+##                else:
+##                    continue
+                #previous return    
+                    return gene_name
 
 def main(argv):
     (opts, args) = parser.parse_args()
@@ -142,18 +147,19 @@ def main(argv):
         # Get sequence name
         sequence_name = record.name
         sequence_len = len(record['sequence'])
+        #print sequence_name
         if sequence_name.startswith('rand'):
-            search_result = 'random'
+            search_result2 = 'random'
             #print 'Found random sequence'
         else:
-            sequence_name = sequence_name.split('|')
-            coordinates_string = str(sequence_name[4])
-            coordinates_string_2 = coordinates_string.split('_')
-            start_pair = int(coordinates_string_2[1])
-            end_pair = int(coordinates_string_2[2])
-            which_pair = coordinates_string_2[9]
+            sequence_name = sequence_name.split('_')
+            read_chromosome = sequence_name[0]
+            start_pair = int(sequence_name[1])
+            end_pair = int(sequence_name[2])
+            which_pair = sequence_name[9]
             this_pair = which_pair.split('/')
-            pair = this_pair[1]
+            pair = int(this_pair[1])
+            #print '%s, %s, %s, %s' %(start_pair, end_pair, sequence_len, pair)
             if end_pair > start_pair:
                 if pair == 1:
                     start_sequence = start_pair
@@ -170,18 +176,17 @@ def main(argv):
                     end_sequence = end_pair + sequence_len
             # Test if read is in a cazyme gene region
             #print '%s, %s' %(start_sequence, end_sequence)
-            search_result = score_gene(start_sequence, end_sequence, sequence_len, annotation_dict)
-#            search_result2 = score_gene2 (start_sequence, end_sequence, sequence_len, annotation_dict, chromosome)
+            search_result2 = score_gene2 (start_sequence, end_sequence, sequence_len, annotation_dict, read_chromosome)
             #print search_result
-            if search_result == None:
-                search_result = 'Intergenic'        
+            if search_result2 == None:
+                search_result2 = 'Intergenic'        
 #            else:
 #                continue
             #print search_result
-        if search_result in expected_list:
+        if search_result2 in expected_list:
             counter += 1
             #print '%s\t%s' %(record.name, search_result)
-            fileout.write('%s\t%s\n' %(record.name, search_result))
+            fileout.write('%s\t%s\n' %(record.name, search_result2))
         #else:
          #   continue
         print 'Found %s expected cazy reads' %counter

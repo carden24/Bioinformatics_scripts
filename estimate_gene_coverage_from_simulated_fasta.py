@@ -153,7 +153,7 @@ def main(argv):
             end_pair = int(coordinates_string_2[2])
             which_pair = coordinates_string_2[9]
             this_pair = which_pair.split('/')
-            pair = this_pair[1]
+            pair = int(this_pair[1])
             if end_pair > start_pair:
                 if pair == 1:
                     start_sequence = start_pair
