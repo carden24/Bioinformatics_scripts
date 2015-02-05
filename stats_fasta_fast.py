@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #usage
-#python fasta.stats.v2.py <filein>
+#python stats_fasta_fast.py <filein>
 
 import sys
 import Bio
