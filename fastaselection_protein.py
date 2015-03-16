@@ -51,9 +51,9 @@ reque = set(requestedsequences)
 duplicated = len(requestedsequences) - len(reque)
 
 if (duplicated > 0):
-   print "You have %s duplicated requested sequences" %duplicated
-else:
-   continue
+   print 'You have %s duplicated requested sequences' %duplicated
+#else:
+#   continue
 
 number_records = len(reque)
 print "%s records requested" % number_records
