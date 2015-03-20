@@ -2,9 +2,6 @@
 # File created on 3 Mar 2014.
 
 # author__ = "Erick Cardenas Poire"
-# Run prodigal and export results in gff results
-# Parse genebnak
-
 
 # Usage python ./score_cgff.py <prodigal_output.gff>
 
@@ -42,4 +39,14 @@ for key, value in contig_length_dictionary.iteritems():
 
 filein.close()
 fileout.close()
+
+import os
+output_file2 = shortname + "_table.csv"
+
+print 'Reformating table'
+os.system(' '.join(['Rscript ~/scripts/three_column_table_to_matrix.R',output_file,output_file2]))
+
+
+
+
 
