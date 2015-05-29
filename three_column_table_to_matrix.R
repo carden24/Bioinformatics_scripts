@@ -4,6 +4,8 @@
 #R --no-save -f three_column_table_to_matrix.R <infile> <outfile.csv>
 #0 1         2  3                              4   	5
 
+rm(list=ls())
+
 library(reshape2)
 
 
@@ -13,7 +15,13 @@ print(args)
 filein = args[6]
 fileout = args[7]
 
-#filein = file.choose()
+
+setwd("C:/Users/Erick Cardenas/Dropbox/")
+setwd("C:/Users/Erick Cardenas/Dropbox/all_sites_analysis/cazy.all.sites/Round4-49bits")
+
+filein = file.choose()
+#fileout = "cazy_all_sites.csv"
+
 
 data = read.delim(file = filein, header = FALSE)
 head(data)
