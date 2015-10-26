@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #usage
-#python rename.fasta-to-fasta.py <filein> > <fileout>
+#python filter_fasta_by_completeness.py <filein> > <fileout>
 
 import sys
 import Bio
