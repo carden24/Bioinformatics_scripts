@@ -3,6 +3,7 @@
 # 	0			1		2		
 
 import sys, screed
+# need to replace with Biopython
 
 #inputs
 filein = open(sys.argv[1], 'r')
