@@ -7,19 +7,19 @@ import sys
 import Bio
 from Bio import SeqIO
 
-filein=open(sys.argv[1],'rb')
-fileout=open(sys.argv[2], 'w')
+filein = open(sys.argv[1], 'rb')
+fileout = open(sys.argv[2], 'w')
 
-for seq_record in SeqIO.parse(filein, format="fasta"):
-   line=seq_record.description
+for seq_record in SeqIO.parse(filein, format = "fasta"):
+   line = seq_record.description
 #   print line
-   line=line.split('#')
+   line = line.split('#')
 #   print line
-   partial_info=line[4]
+   partial_info = line[4]
 #   print partial_info
-   partial=partial_info.split(';')
+   partial = partial_info.split(';')
 #   print partial
-   if partial[1]=='partial=00':
+   if partial[1] == 'partial=00':
       fileout.write('>%s %s\n%s\n' %(seq_record.id, seq_record.description, seq_record.seq))
 #      print 'complete'
    else:

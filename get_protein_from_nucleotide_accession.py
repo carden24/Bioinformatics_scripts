@@ -1,14 +1,7 @@
-
-
 #!/usr/bin/python
 # File created on 28 Feb 2014.
 
-__author__ = "Erick Cardenas Poire"
-__copyright__ = "Copyright 2014"
-__credits__ = [""]
-__version__ = "1.0"
-__maintainer__ = "Erick Cardenas Poire"
-__status__ = "Release"
+# Author__ = "Erick Cardenas Poire"
 
 import sys
 from Bio import SeqIO
@@ -28,13 +21,13 @@ protein sequences from CDS
 """
 script_info['script_usage'] = []
 
-usage= """
+usage = """
 Need to run it like this:
 ./get_protein_from_nucleotide_accession.py -i input_file"""
 
 parser = OptionParser(usage)
-parser.add_option("-i", "--input_file", dest="input_fp",
-                  help='the input fastq file [REQUIRED]')
+parser.add_option("-i", "--input_file", dest = "input_fp",
+                  help = 'the input fastq file [REQUIRED]')
 
 
 # Creates an input output pair if input is just an input file

@@ -1,3 +1,6 @@
+# Does not check for quality encoding but for a B as indicator of bad quality.
+# use it with caution 
+
 #!/usr/bin/env python
 
 import sys

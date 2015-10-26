@@ -12,7 +12,7 @@ fw = open(fileout, 'w')
 from screed.fastq import fastq_iter
 
 for n, record in enumerate(fastq_iter(gzip.open(filein,'rb'))):
-   if n <=100000:
+   if n <= 100000:
       sequence = record['sequence']
       name = record['name']
       fw.write('>%s\n%s\n' % (name, sequence))

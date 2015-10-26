@@ -15,21 +15,21 @@ import sys
 #if line starts with LENG get name write name.hmm
 #read next line
 
-filein=open(sys.argv[1],'r')
-fileout=open(sys.argv[2],'w')
+filein = open(sys.argv[1], 'r')
+fileout = open(sys.argv[2], 'w')
 
 for line in filein:
    if line.startswith('NAME'):
-      line=line.strip('\n')
-      line=line.split(' ')
-      name=line[2]
+      line = line.strip('\n')
+      line = line.split(' ')
+      name = line[2]
       fileout.write('%s\t' %name)
       #print line[2]
    else:
       if line.startswith('LENG'):
-         line=line.strip('\n')
-         line=line.split(' ')
-         len=line[2]
+         line = line.strip('\n')
+         line = line.split(' ')
+         len = line[2]
          fileout.write('%s\n' %len)
 #         print line[2]
       else:

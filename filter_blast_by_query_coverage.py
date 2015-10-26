@@ -5,10 +5,10 @@
 
 import sys
 
-filein=open(sys.argv[1],'r')
-out1=sys.argv[2]
+filein = open(sys.argv[1], 'r')
+out1 = sys.argv[2]
 
-fileout=open(out1,'w')
+fileout = open(out1, 'w')
 
 #blast output
 #HS6_179:1:1101:10145:166587/1	gi|49642693|emb|CAH00655.1|	58.33	   24	4e-04	35.0	79
@@ -17,15 +17,15 @@ fileout=open(out1,'w')
 
 
 for line in filein:
-   output=line   
-   line=line.split('\t')			#split line from blast output
-   query_len=float(line[3])		 	#get query lenght
-   alignment_len=float(line[5])			#get alignment length
-   query_coverage=alignment_len/query_len	#get query coverage
+   output = line   
+   line = line.split('\t')			#split line from blast output
+   query_len = float(line[3])		 	#get query lenght
+   alignment_len = float(line[5])			#get alignment length
+   query_coverage = alignment_len / query_len	#get query coverage
    print query_len
    print alignment_len
    print query_coverage
-   if query_coverage>=0.7:
+   if query_coverage >= 0.7:
       fileout.write ('%s' %output)
    else:
       continue

@@ -88,7 +88,7 @@ print counterAA_NN
 print len(good_dictionary.keys())
 
 #print bad_dictionary
-pickle.dump(good_dictionary,file_good_dictionary)
+pickle.dump(good_dictionary, file_good_dictionary)
 
 
 file_bad_dictionary.close()

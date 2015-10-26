@@ -27,14 +27,14 @@ def update_progress(progress):
     sys.stderr.write(text)
     sys.stderr.flush()
 
-counter=0
+counter = 0
 for n, record in enumerate(fastq_iter(open(sys.argv[1]))):
-   counter=counter+1
+   counter = counter + 1
    print ('%s reads found' %counter)
 
 for n, record in enumerate(fastq_iter(open(sys.argv[1]))):
    if n % 1 == 0:
-      progress=n/float(counter)
+      progress=n / float(counter)
       update_progress(progress)
 #print>>sys.stderr, '...', n     
    sequence = record['sequence']

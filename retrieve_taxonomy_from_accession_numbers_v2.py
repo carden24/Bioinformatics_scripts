@@ -22,8 +22,8 @@ print requestedsequences
 print "%d Sequence(s) requested" % len(requestedsequences)
 print ''
 
-handle = Entrez.efetch(db="nuccore", id=requestedsequences, rettype="gb", retmode="text")
-records = SeqIO.parse(handle,"genbank")
+handle = Entrez.efetch(db = "nuccore", id = requestedsequences, rettype = "gb", retmode = "text")
+records = SeqIO.parse(handle, "genbank")
 
 for record in records:
 #   print record.id
