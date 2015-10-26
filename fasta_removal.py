@@ -1,6 +1,7 @@
 # Removes sequences that are in a list provided
 # Requires fasta file and list of sequences to be removed (one name per line)
 # Requires screed module
+
 #usage
 #python fasta.removal.py <originalfile.nucleotide.fasta> <namelist>
 # 	0			1		2		
@@ -8,8 +9,8 @@
 import sys, screed
 
 # Inputs
-filein = open(sys.argv[1],'r')
-filelist = open(sys.argv[2],'r')
+filein = open(sys.argv[1], 'r')
+filelist = open(sys.argv[2], 'r')
 
 # Outputs
 outy = sys.argv[1]

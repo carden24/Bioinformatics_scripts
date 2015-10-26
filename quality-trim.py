@@ -1,3 +1,6 @@
+# this scripts looks for B as a indicator of bad quality in the qual section of a fastq. It does not checks the quality encoding system. Use it carefully
+
+
 #!/usr/bin/env python
 
 import sys

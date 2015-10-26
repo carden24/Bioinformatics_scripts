@@ -19,7 +19,7 @@ from commands import getstatusoutput
 from optparse import OptionParser
 
 #config = load_config()
-script_info={}
+script_info = {}
 script_info['brief_description'] = """Converts fastq to fasta"""
 script_info['script_description'] = """Read fastq with Biopython, writes fasta
              REQUIRED: You must have a fasta file"""
@@ -30,8 +30,8 @@ Need to run it like this:
 ./fastq.to.fasta.py  -i input_file"""
 
 parser = OptionParser(usage)
-parser.add_option("-i", "--input_file", dest="input_fp",
-                  help='the input fastq file [REQUIRED]')
+parser.add_option("-i", "--input_file", dest = "input_fp",
+                  help = 'the input fastq file [REQUIRED]')
 
 
 # Creates an input output pair if input is just an input file
@@ -39,7 +39,7 @@ def create_an_inputs_and_output(input_file):
    input_output = []
    # finds file format removes extension, case insensitive search
    shortname = re.sub('[.](fastq$|fq$)','',input_file, re.I)
-   output_file = shortname+".fasta"
+   output_file = shortname + ".fasta"
    input_output.append(input_file)
    input_output.append(output_file)
    return input_output

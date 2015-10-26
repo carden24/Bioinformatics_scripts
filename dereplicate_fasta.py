@@ -1,12 +1,7 @@
 #!/usr/bin/python
 from __future__ import division
 
-__author__ = "Erick Cardenas Poire"
-__copyright__ = "Copyright 2014"
-__credits__ = [""]
-__version__ = "1.0"
-__maintainer__ = "Erick Cardenas Poire"
-__status__ = "Release"
+# Author = "Erick Cardenas Poire"
 
 try:
     from Bio import SeqIO
@@ -22,7 +17,7 @@ except:
 
 
 # config = load_config()
-script_info={}
+script_info = {}
 script_info['brief_description'] = """Dereplicates sequences based on name"""""
 script_info['script_description'] = """
 	    REQUIRED: Fasta file

@@ -1,3 +1,5 @@
+#Author Roli Wilhelm
+
 #!/usr/bin/python
 import sys, os, re, getopt, glob, subprocess, os.path, numpy as np, time
 import timeit

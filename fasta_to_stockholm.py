@@ -6,11 +6,11 @@ import sys
 from Bio import AlignIO
 
 #input
-filein=open(sys.argv[1],"r")
+filein = open(sys.argv[1], "r")
 
 #outputs
-fileout=open(sys.argv[2],'w')
+fileout = open(sys.argv[2], 'w')
 
 
-AlignIO.convert(filein,"fasta",fileout,"stockholm")
+AlignIO.convert(filein, "fasta", fileout, "stockholm")
 

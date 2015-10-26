@@ -34,8 +34,8 @@ Need to run it like this:
 ./get_protein_from_nucleotide_accession.py -i input_file"""
 
 parser = OptionParser(usage)
-parser.add_option("-i", "--input_file", dest="input_fp",
-                  help='the input fastq file [REQUIRED]')
+parser.add_option("-i", "--input_file", dest = "input_fp",
+                  help = 'the input fastq file [REQUIRED]')
 
 
 # Creates an input output pair if input is just an input file
@@ -79,7 +79,7 @@ def main(argv):
             dict_entry = dict_entry0[0]
         #print record_name
         #print dict_entry
-        handle = Entrez.efetch(db="nucleotide", id=record_name, rettype="gb", retmode="text")
+        handle = Entrez.efetch(db = "nucleotide", id = record_name, rettype = "gb", retmode = "text")
         records = SeqIO.parse(handle, "genbank")
         time.sleep(0.5)
         for record in records:

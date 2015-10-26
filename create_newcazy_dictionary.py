@@ -1,12 +1,7 @@
 #!/usr/bin/python
 # File created on 13 Feb 2014.
 
-__author__ = "Erick Cardenas Poire"
-__copyright__ = "Copyright 2014"
-__credits__ = [""]
-__version__ = "1.0"
-__maintainer__ = "Erick Cardenas Poire"
-__status__ = "Release"
+# Author = "Erick Cardenas Poire"
 
 
 import pickle

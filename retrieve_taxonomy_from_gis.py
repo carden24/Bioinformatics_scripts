@@ -25,7 +25,7 @@ print ''
 
 
 handle = Entrez.efetch(db="protein", id=requestedsequences, rettype="gb", retmode="text")
-records = SeqIO.parse(handle,"genbank")
+records = SeqIO.parse(handle, "genbank")
 ##print records
 
 for record in records:

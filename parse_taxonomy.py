@@ -18,8 +18,6 @@ input_list = pickle.load(filein)
 #    input_dictionary[0]['LineageEx'] if d['Rank'] in ['family', 'order']}
 
 
-
-
 for organism in input_list:
 #    print organism
     lineage = {d['Rank']:d['ScientificName'] for d in organism['LineageEx'] if d['Rank'] in ['phylum', 'class', 'order', 'family', 'genus' ]}

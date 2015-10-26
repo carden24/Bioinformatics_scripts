@@ -24,7 +24,7 @@ print requestedsequences
 
 
 #handle = Entrez.efetch(db="protein", id=requestedsequences, rettype="gb", retmode="text")
-handle = Entrez.efetch(db="protein", id=requestedsequences, rettype="fasta", retmode="text")
+handle = Entrez.efetch(db = "protein", id = requestedsequences, rettype = "fasta", retmode = "text")
 records = SeqIO.parse(handle, "fasta")
 
 for record in records:
