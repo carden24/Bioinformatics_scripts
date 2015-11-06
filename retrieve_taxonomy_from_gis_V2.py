@@ -18,7 +18,7 @@ for line in filelist:
    line = line.strip('\n')
    line = line.strip('\r')
    requestedsequences.append(line)
-print requestedsequences
+#print requestedsequences
 print "%d Sequence(s) requested" % len(requestedsequences)
 print ''
 
