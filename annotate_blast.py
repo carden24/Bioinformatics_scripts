@@ -13,11 +13,13 @@ fileout1 = open(out1, 'w')
 cazy_or_foly_dict = pickle.load(filedict)
 
 for line in filein:
+   print line
    line = line.lstrip(" ")
    line = line.rstrip("\n ")
    line = line.split('\t')
    subject_count = line[0]			#get subject count
    subject = line[1]				#get subject
+   print subject
    dict_entry = cazy_or_foly_dict.get(subject)	#get info for subject in dictionary
    gi_line  = dict_entry[0]
    gi_line = gi_line.split('|')
