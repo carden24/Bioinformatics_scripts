@@ -10,26 +10,29 @@ library(reshape2)
 
 
 # Read from arguments
-args <- commandArgs() #read from arguments
-print(args)
-filein = args[6]
-fileout = args[7]
-
+#args <- commandArgs() #read from arguments
+#print(args)
+#filein = args[6]
+#fileout = args[7]
 
 setwd("C:/Users/Erick Cardenas/Dropbox/")
-setwd("C:/Users/Erick Cardenas/Dropbox/all_sites_analysis/cazy.all.sites/Round4-49bits")
-setwd("C:/Users/Erick Cardenas/Dropbox/all_sites_analysis/nitrogen_cycling")
+setwd("C:/Users/Erick Cardenas/Dropbox/roli_dessication")
+
+setwd("C:/Users/Erick Cardenas/Dropbox/all_sites_analysis/manuscript/richness_cazy")
 
 
 filein = file.choose()
-#fileout = "cazy_all_sites.csv"
 
 
 data = read.delim(file = filein, header = FALSE)
 head(data)
 data2 = acast(data, V1 ~ V2, value.var = 'V3', fill = 0)
 
-write.csv(data2, fileout)
-write.csv(data2, "fileout.csv")
+#write.csv(data2, fileout)
+#write.csv(data2, "fileout.csv")
+write.csv(data2, "kegg_fileout.csv")
+write.csv(data2, "kegg_module_fileout.csv")
+
+
 
 
