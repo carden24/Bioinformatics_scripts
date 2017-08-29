@@ -8,6 +8,9 @@
 # 8903 Birmensdorf, Switzerland
 # Programmer: Charles Howes (vxtractor(at)ch.pkts.ca)
 # 
+#                                     If you are Looking for the actual program go here: 
+#                                      https://github.com/MohnLab/V-Xtractor
+#
 # Citation: Hartmann M, Howes CG, Abarenkov K, Mohn WW, Nilsson RH (2010)
 # V-Xtractor: An open-source, high-throughput software tool to identify
 # and extract hypervariable regions of small subunit (16S/18S) ribosomal
